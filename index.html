@@ -3,12 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <title>Game of life</title>
+    <style>
+        html, body {
+            background-color: rgb(33, 33, 33);
+            color: rgb(238, 238, 238);
+            font-size: 12pt;
+        }
+        #container{
+            max-width: 1200px;
+            margin: auto;
+        }
+        #toolbar {
+            margin: auto;
+            display: flex;
+            direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0px 24px;
+            max-width: 1100px;
+        }
+        button {
+            background-color: #007bff;
+            border: solid #007bff;
+            border-radius: .25rem;
+            padding: .375rem .75rem;
+            text-align: center;
+            display: inline-block;
+            color: rgb(238, 238, 238);
+            font-weight: bold;
+            transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            margin-right: 5px;
+        }
+        button:hover {
+            cursor: pointer;
+            background-color: #006cd8;
+            border: solid #006cd8;
+        }
+    </style>
 </head>
 <body>
-<canvas id="gameoflife" width="800" height="800" style="border: 1px solid black;"></canvas>
-<br/>
-<button id="RUN" onclick="setState(STATE.RUN)">Run</button>
-<button id="PAUSE" onclick="setState(STATE.PAUSE)">Pause</button>
+<div id="container">
+    <canvas id="gameoflife" width="1200" height="800" onclick="toggleCell(event)"></canvas>
+</div>
+<div id="toolbar">
+    <div>
+        <button id="run" onclick="toggleGameOfLife()">Play / Pause</button>
+        <button id="next" onclick="update()">Next</button>
+        <button id="clear" onclick="genocide()">Clear</button>
+        <button id="random" onclick="init()">Random pattern</button>
+    </div>
+    <div>
+        <p id="gen-counter">Generation 0</p>
+    </div>
+</div>
 <script src="main.js"></script>
 </body>
 </html>
